@@ -45,8 +45,11 @@ class VideoBus
         $video = $this->videoService->find($videoId);
         // 计算是否看完
         $isWatched = $video['duration'] <= $duration;
-
         /**
+         * app()相当于容器，然后make就是从容器获取，一般在别的地方已经通过绑定(bind)或者(instance)将对象丢入容器
+         * 降低了耦合性
+         * 可以取别名
+         *
          * @var CacheService $cacheService
          */
         $cacheService = app()->make(CacheServiceInterface::class);
